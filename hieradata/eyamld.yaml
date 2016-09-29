@@ -1,0 +1,17 @@
+---
+classes:
+  - role::eyamld
+profile::docker_containers::containers:
+  eyamld:
+    image: "registry.com:5000/encryptinator:latest"
+    ports:
+      - "80:3000"
+      - "443:3001"
+    env:
+      - "EMAILDOMAIN=example.com"
+      - "SENDER=encryptor@example.com"
+      - "MAILSERVER=email-smtp.eu-west-1.amazonaws.com"
+      - SMTPUSERNAME=%{hiera('eyamld::smtpusername')}
+      - SMTPPASSWORD=%{hiera('eyamld::smtppassword')}
+      - "SMTPPORT=25"
+    use_name: true

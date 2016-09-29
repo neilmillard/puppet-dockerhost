@@ -1,0 +1,11 @@
+forge "https://forgeapi.puppetlabs.com"
+
+# Base modules
+mod "saz/timezone", "3.0.1"
+mod "saz/rsyslog", "4.0.2"
+mod "thias/postfix", "0.3.4"
+mod "thias/sysctl", "0.3.2"
+mod "stahnma/epel", "1.0.0"
+mod "puppetlabs/stdlib", "4.6.0"
+mod "maestrodev/wget", "1.5.6"
+mod "erwbgy/limits", "0.3.1"

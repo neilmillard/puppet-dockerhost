@@ -1,0 +1,2 @@
+# Role specific modules
+mod "garethr/docker", "3.3.2"
