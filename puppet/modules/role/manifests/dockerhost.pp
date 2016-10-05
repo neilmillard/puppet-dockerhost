@@ -1,4 +1,4 @@
-class role::eyamld {
+class role::dockerhost {
   include ::profile::base
   include ::profile::os_limits
   include ::profile::docker_base
