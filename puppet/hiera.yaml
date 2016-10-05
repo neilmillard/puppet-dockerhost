@@ -3,11 +3,11 @@
   - eyaml
   - yaml
 :eyaml:
-  :datadir: /etc/puppet/hieradata
+  :datadir: /etc/puppetlabs/puppet/hieradata
   :pkcs7_private_key: /etc/puppet/secure/keys/private_key.pkcs7.pem
   :pkcs7_public_key:  /etc/puppet/secure/keys/public_key.pkcs7.pem
 :yaml:
-  :datadir: /etc/puppet/hieradata
+  :datadir: /etc/puppetlabs/puppet/hieradata
 :hierarchy:
   - "%{::init_env}/%{::init_role}"
   - "%{::init_role}"
