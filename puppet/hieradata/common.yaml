@@ -1,0 +1,2 @@
+profile::rsyslog::server: "logstore"
+profile::rsyslog::server::port: '515'

@@ -240,11 +240,11 @@ clone_git_http_repo() {
 }
 # Symlink the cloned git repo to the usual location for Puppet to run
 symlink_puppet_dir() {
+  # get puppet version - also happens to create /etc/puppetlabs
+  local PUPPETVER=$(echo $(puppet --version) | cut -d '.' -f 1)
   local RESULT=''
   # Link $puppetdir to our private repo.
   PUPPET_DIR="${FACTER_init_repodir}/puppet"
-  # create full path to puppetdir (as default is now /etc/puppetlabs/puppet. otherwise puppetlabs dir may not exist
-  mkdir -p ${puppetdir}
   if [ -e ${puppetdir} ]; then
     RESULT=$(rm -rf ${puppetdir});
     if [[ $? != 0 ]]; then
@@ -267,6 +267,22 @@ symlink_puppet_dir() {
   RESULT=$(ln -s ${puppetdir}/hiera.yaml /etc/hiera.yaml)
   if [[ $? != 0 ]]; then
     log_error "Failed to create symlink from /etc/hiera.yaml\nln returned:\n${RESULT}"
+  fi
+
+  # if puppet ver = 4, link to modules
+  if [[ "${PUPPETVER}" == "4" ]]; then
+    local codedir="/etc/puppetlabs/code"
+    if [ -e ${codedir} ]; then
+      RESULT=$(rm -rf ${codedir});
+      if [[ $? != 0 ]]; then
+        log_error "Failed to remove ${codedir}\nrm returned:\n${RESULT}"
+      fi
+    fi
+
+    RESULT=$(ln -s "${PUPPET_DIR}" ${codedir})
+    if [[ $? != 0 ]]; then
+      log_error "Failed to create symlink from ${PUPPET_DIR}\nln returned:\n${RESULT}"
+    fi
   fi
 }
 
