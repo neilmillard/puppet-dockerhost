@@ -1,2 +1,33 @@
 profile::rsyslog::server: "logstore"
 profile::rsyslog::server::port: '515'
+profile::os_limits::sysctl_vm_max_map_count: '131072'
+profile::os_limits::sysctl_net_core_somaxconn: '1024'
+profile::os_limits::sysctl_net_ipv4_tcp_tw_recycle: '1'
+profile::os_limits::sysctl_net_ipv4_tcp_tw_reuse: '1'
+limits:
+  '*':
+    nofile:
+      soft: '100000'
+      hard: '100000'
+    memlock:
+      soft: 'unlimited'
+      hard: 'unlimited'
+    as:
+      soft: 'unlimited'
+      hard: 'unlimited'
+    nproc:
+      soft: '10240'
+      hard: '10240'
+  'root':
+    nofile:
+      soft: '100000'
+      hard: '100000'
+    memlock:
+      soft: 'unlimited'
+      hard: 'unlimited'
+    as:
+      soft: 'unlimited'
+      hard: 'unlimited'
+    nproc:
+      soft: '10240'
+      hard: '10240'
