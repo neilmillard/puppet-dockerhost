@@ -3,8 +3,8 @@ class profile::docker_base(
   $registry = 'registry.com:5000',
   $docker_home = '/var/lib/docker',
   $docker_rpm = hiera('profile::docker_base::docker_rpm', 'https://s3-eu-west-1.amazonaws.com/static.millardtechnicalservices.co.uk/docker/docker-io-1.7.1-4.el6.x86_64.rpm'),
-  $extra_parameters = "`grep nameserver /etc/resolv.conf | \
-    grep -v '.0.2'| sed 's/nameserver/--dns/g' | tr '\n' ' '`",
+  # $extra_parameters = "`grep nameserver /etc/resolv.conf | \
+  #   grep -v '.0.2'| sed 's/nameserver/--dns/g' | tr '\n' ' '`",
   $extra_parameters = generate('/bin/bash', '-c', 'PATH=$PATH:~/bin:~/usr/bin grep nameserver /etc/resolv.conf|grep -v \'.0.2\'| sed \'s/nameserver/--dns/g\' | tr \'\n\' \' \' '),
   $log_rotate = false,
   $direct_lvm_mode = false,
