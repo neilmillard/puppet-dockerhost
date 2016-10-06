@@ -32,8 +32,8 @@ define profile::docker_container (
 ) {
 
   if $manage_volume {
-    volumeDir { $volumes: }
-    VolumeDir<| |> -> Service['docker']
+    profile::volumeDir { $volumes: }
+    Profile::VolumeDir<| |> -> Service['docker']
   }
 
   Service['docker']
