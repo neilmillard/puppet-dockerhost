@@ -2,7 +2,7 @@
 classes:
   - role::dockerhost
 profile::docker_containers::containers:
-  eyamld:
+  tensorflow:
     image: "tensorflow/tensorflow"
     ports:
       - "8888:8888"
