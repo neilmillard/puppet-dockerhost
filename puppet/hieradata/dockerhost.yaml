@@ -3,10 +3,9 @@ classes:
   - role::dockerhost
 profile::docker_containers::containers:
   eyamld:
-    image: "nginx"
+    image: "tensorflow/tensorflow"
     ports:
-      - "80:80"
+      - "8888:8888"
     env:
-      - NGINX_HOST=foobar.com
-      - NGINX_PORT=80
+      - PASSWORD=somepassword
     use_name: true
